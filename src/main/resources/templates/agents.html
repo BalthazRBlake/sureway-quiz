@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'agents')}">
+
+<body>
+
+    <table class="table">
+        <tr>
+            <th>Agent Name</th>
+            <th>Password</th>
+            <th>Score</th>
+        </tr>
+        <tr th:each="agent : ${agents}">
+            <td th:text="${agent.name}"></td>
+            <td th:text="${agent.password}"></td>
+            <td th:text="${agent.score}"></td>
+        </tr>
+    </table>
+
+</body>
+</html>

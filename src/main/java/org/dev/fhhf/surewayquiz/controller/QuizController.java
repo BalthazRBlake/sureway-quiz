@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.*;
 import java.util.*;
 
 @Controller
-@RequestMapping("/")
+@RequestMapping("/sw/quiz")
 public class QuizController {
 
     @Autowired
     private QuizService quizService;
     private int score = 0;
 
-    @GetMapping("/")
+    @GetMapping()
     public String home(Model model, Quiz quiz) {
 
         //this.quiz = quizService.getAllQuestions();
@@ -29,7 +29,7 @@ public class QuizController {
         model.addAttribute("initQ", new Quiz(wrongAnswers));
         ///***   ***///
 
-        return "home";
+        return "loginForm";
     }
 
     @GetMapping("/question/{id}")

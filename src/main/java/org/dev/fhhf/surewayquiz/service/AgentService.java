@@ -8,5 +8,5 @@ public interface AgentService {
 
     List<Agent> findAllAgents();
 
-    Agent findAgentByName(String string);
+    Agent findAgentByName(String agentName);
 }
