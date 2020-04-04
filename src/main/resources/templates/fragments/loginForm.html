@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'login')}">
+
+<body>
+    <div class="card text-white bg-secondary">
+        <h4 class="card-header">
+            LogIn
+        </h4>
+        <div class="card-body">
+
+            <h4 class="card-title">
+                Provide User and Pass
+            </h4>
+
+            <div th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div th:if="${param.logout}">
+                You have been logged out.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <div class="card-text">
+                    <div class="form-group row">
+                        <label for="agentName" class="col-sm-2 col-form-label">empName</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="username" placeholder="Agent Name" class="form-control" id="agentName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="agentPass" class="col-sm-2 col-form-label">empName</label>
+                        <div class="col-sm-10">
+                            <input type="password" name="password" placeholder="*****" class="form-control" id="agentPass">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div id="formBtn" class="form-group row">
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-warning">LogIn</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="card-footer">
+            If you do not remember your password, ask office manager.
+        </div>
+    </div>
+</body>
+</html>

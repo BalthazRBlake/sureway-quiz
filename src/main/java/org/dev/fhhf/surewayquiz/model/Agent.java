@@ -14,6 +14,7 @@ public class Agent implements Serializable {
     @Column(name = "agent_id", nullable = false)
     private Integer agentId;
     private String name;
+    private String password;
     private Integer score;
 
     public Agent() {
@@ -39,6 +40,14 @@ public class Agent implements Serializable {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Integer getScore() {

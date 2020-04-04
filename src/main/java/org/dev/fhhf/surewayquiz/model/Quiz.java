@@ -2,6 +2,7 @@ package org.dev.fhhf.surewayquiz.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 @Table(name = "quiz")
@@ -15,13 +16,20 @@ public class Quiz implements Serializable {
     private String question;
     @Column(name = "right_answer")
     private String rightAnswer;
+    @ElementCollection
     @Column(name = "wrong_answers")
-    private String wrongAnswers;
+    private List<String> wrongAnswers;
+    @Transient
+    private String selectedAnswer;
 
     public Quiz() {
     }
 
-    public Quiz(Integer quizId, String question, String rightAnswer, String wrongAnswers) {
+    public Quiz(List<String> wrongAnswers) {
+        this.wrongAnswers = wrongAnswers;
+    }
+
+    public Quiz(Integer quizId, String question, String rightAnswer, List<String> wrongAnswers) {
         this.quizId = quizId;
         this.question = question;
         this.rightAnswer = rightAnswer;
@@ -52,12 +60,20 @@ public class Quiz implements Serializable {
         this.rightAnswer = rightAnswer;
     }
 
-    public String getWrongAnswers() {
+    public List<String> getWrongAnswers() {
         return wrongAnswers;
     }
 
-    public void setWrongAnswers(String wrongAnswers) {
+    public void setWrongAnswers(List<String> wrongAnswers) {
         this.wrongAnswers = wrongAnswers;
+    }
+
+    public String getSelectedAnswer() {
+        return selectedAnswer;
+    }
+
+    public void setSelectedAnswer(String selectedAnswer) {
+        this.selectedAnswer = selectedAnswer;
     }
 
     @Override
