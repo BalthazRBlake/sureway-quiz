@@ -19,7 +19,17 @@ public class AgentServiceImpl implements AgentService {
     }
 
     @Override
+    public Agent findAgentById(int id) {
+        return agentRepo.findById(id).get();
+    }
+
+    @Override
     public Agent findAgentByName(String agentName) {
         return agentRepo.findByName(agentName).get();
+    }
+
+    @Override
+    public Agent saveAgent(Agent agent) {
+        return agentRepo.save(agent);
     }
 }

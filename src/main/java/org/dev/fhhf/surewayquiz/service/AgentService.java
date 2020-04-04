@@ -9,4 +9,8 @@ public interface AgentService {
     List<Agent> findAllAgents();
 
     Agent findAgentByName(String agentName);
+
+    Agent findAgentById(int id);
+
+    Agent saveAgent(Agent agent);
 }

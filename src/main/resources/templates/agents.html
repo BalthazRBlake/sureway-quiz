@@ -9,11 +9,13 @@
             <th>Agent Name</th>
             <th>Password</th>
             <th>Score</th>
+            <th></th>
         </tr>
         <tr th:each="agent : ${agents}">
             <td th:text="${agent.name}"></td>
             <td th:text="${agent.password}"></td>
             <td th:text="${agent.score}"></td>
+            <td><a th:href="@{/sw/agent/{id}/initForm(id=${agent.agentId})}" th:text="Edit"></a></td>
         </tr>
     </table>
 

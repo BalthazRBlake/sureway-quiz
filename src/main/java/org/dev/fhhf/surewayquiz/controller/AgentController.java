@@ -26,9 +26,17 @@ public class AgentController {
         return "agents";
     }
 
-    @PostMapping("/update/{id}")
-    public String unpdateAgentInfo(@PathVariable("id") int id, Agent agent){
+    @GetMapping("/{id}/initForm")
+    public String initUpdateForm(@PathVariable("id") int id, Model model){
+        Agent agent = agentService.findAgentById(id);
+        model.addAttribute("agent", agent);
+        return "editagent";
+    }
 
-        return "redirect/agents";
+    @PostMapping("/{id}/update")
+    public String updateAgentInfo(@PathVariable("id") int id, Agent agent){
+        agent.setAgentId(id);
+        agentService.saveAgent(agent);
+        return "redirect:/sw/agent";
     }
 }
