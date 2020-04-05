@@ -16,14 +16,19 @@ public class Agent implements Serializable, Comparable<Agent> {
     private String name;
     private String password;
     private Integer score;
+    private String roles;
+    private Boolean active;
 
     public Agent() {
     }
 
-    public Agent(Integer agentId, String name, Integer score) {
+    public Agent(Integer agentId, String name, String password, Integer score, String roles, boolean active) {
         this.agentId = agentId;
         this.name = name;
+        this.password = password;
         this.score = score;
+        this.roles = roles;
+        this.active = active;
     }
 
     @Override
@@ -63,12 +68,31 @@ public class Agent implements Serializable, Comparable<Agent> {
         this.score = score;
     }
 
+    public String getRoles() {
+        return roles;
+    }
+
+    public void setRoles(String roles) {
+        this.roles = roles;
+    }
+
+    public boolean isActive() {
+        return active;
+    }
+
+    public void setActive(boolean active) {
+        this.active = active;
+    }
+
     @Override
     public String toString() {
         return "Agent{" +
                 "agentId=" + agentId +
                 ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
                 ", score=" + score +
+                ", roles='" + roles + '\'' +
+                ", active=" + active +
                 '}';
     }
 }
