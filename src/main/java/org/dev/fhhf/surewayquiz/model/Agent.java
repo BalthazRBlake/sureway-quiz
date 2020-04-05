@@ -6,7 +6,7 @@ import java.io.Serializable;
 @Entity
 
 @Table(name="agent")
-public class Agent implements Serializable {
+public class Agent implements Serializable, Comparable<Agent> {
 
     private static final long serialVersionUID = 2345L;
     @Id
@@ -24,6 +24,11 @@ public class Agent implements Serializable {
         this.agentId = agentId;
         this.name = name;
         this.score = score;
+    }
+
+    @Override
+    public int compareTo(Agent agent) {
+        return this.getName().compareTo(agent.getName());
     }
 
     public Integer getAgentId() {

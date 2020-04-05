@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Collections;
 import java.util.List;
 
 @Controller
@@ -22,6 +23,7 @@ public class AgentController {
     @GetMapping()
     public String getAllAgents(Model model){
         List<Agent> agents = agentService.findAllAgents();
+        Collections.sort(agents);
         model.addAttribute("agents", agents);
         return "agents";
     }
