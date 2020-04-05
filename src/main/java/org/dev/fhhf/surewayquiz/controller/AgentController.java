@@ -32,7 +32,7 @@ public class AgentController {
     public String initUpdateForm(@PathVariable("id") int id, Model model){
         Agent agent = agentService.findAgentById(id);
         model.addAttribute("agent", agent);
-        return "editagent";
+        return "editAgent";
     }
 
     @PostMapping("/{id}/update")

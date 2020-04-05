@@ -29,7 +29,7 @@ public class QuizController {
         model.addAttribute("initQ", new Quiz(wrongAnswers));
         ///***   ***///
 
-        return "loginForm";
+        return "editQuestion";
     }
 
     @GetMapping("/question/{id}")
