@@ -37,7 +37,6 @@ public class AgentController {
 
     @PostMapping("/{id}/update")
     public String updateAgentInfo(@PathVariable("id") int id, Agent agent){
-        agent.setAgentId(id);
         agentService.saveAgent(agent);
         return "redirect:/sw/agent";
     }

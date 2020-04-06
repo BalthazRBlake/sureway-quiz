@@ -1,28 +1,21 @@
 <!DOCTYPE html>
 
 <html xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 
 <body>
 
-<div class="card text-white bg-secondary blockquote text-center">
-    <h4 class="card-header">
-        <blockquote class="blockquote text-center">
+<div class="card w-50 text-white bg-secondary blockquote text-center">
+    <h3 class="card-header">
             Quiz Result
-        </blockquote>
-    </h4>
+    </h3>
 
     <div class="card-body">
-
-        <div class="card-body">
-            <p th:text="${message}"></p>
-            <p>You score <span th:text="${result}"/>%</p>
-        </div>
-
+        <p th:text="${message}"></p>
+        <p>You scored <span th:text="${result}"/>%</p>
     </div>
 
-    <div class="card-footer blockquote text-center">
+    <div class="card-footer">
         <a th:if="${result < 90}" class="btn btn-warning" href="/agent/quiz/1/question">Start</a>
     </div>
 </div>

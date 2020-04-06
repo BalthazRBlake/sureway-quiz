@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'agents')}">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'agents')}">
 
 <body>
 
@@ -12,28 +13,33 @@
     </h4>
 
     <div class="card-body">
-        <h4 class="card-title"></h4>
-        <div class="card-body">
-            <table class="table table-hover table-bordered table-dark">
-                <thead class="thead-light">
-                    <tr>
-                        <th scope="col">Agent Name</th>
-                        <th scope="col">Password</th>
-                        <th scope="col">Score</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr th:each="agent : ${agents}">
-                        <td th:text="${agent.name}"></td>
-                        <td th:text="${agent.password}"></td>
-                        <td th:text="${agent.score}"></td>
-                        <td><a th:href="@{/sw/agent/{id}/initForm(id=${agent.agentId})}" th:text="Edit"></a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <table class="table table-hover table-bordered table-dark">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Agent Name</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">Score</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Roles</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="agent : ${agents}">
+                    <td th:text="${agent.name}"></td>
+                    <td th:text="${agent.password}"></td>
+                    <td th:text="${agent.score}"></td>
+                    <td>
+                        <span th:if="${agent.active}">YES</span>
+                        <span th:if="${!agent.active}">NO</span>
+                    </td>
+                    <td th:text="${agent.roles}"></td>
+                    <td><a th:href="@{/sw/agent/{id}/initForm(id=${agent.agentId})}">Edit</a></td>
+                </tr>
+            </tbody>
+        </table>
     </div>
+
     <div class="card-footer">
     </div>
 </div>

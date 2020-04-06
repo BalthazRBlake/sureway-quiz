@@ -4,7 +4,6 @@
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
-
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -13,26 +12,13 @@
     <title>SureWay | Quiz</title>
 
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}" />
-
-    <style>
-        body {
-          background-image: url('/resources/images/bg.jpg');
-          background-repeat: no-repeat;
-          background-attachment: fixed;
-          background-position: center;
-        }
-        .card {
-            margin: 0 auto; /* Added */
-            float: none; /* Added */
-            margin-bottom: 10px; /* Added */
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" th:href="@{/resources/css/style.css}" />
 </head>
 
 <body>
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="/">
+        <a class="navbar-brand" href="#">
             <img src="/resources/images/logo.png" height="30" class="d-inline-block align-top" alt="">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
@@ -40,20 +26,23 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent" sec:authorize="hasRole('ROLE_ADMIN')">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
+                    <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sw/agent">Agents</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/sw/quiz">Quiz</a>
                 </li>
             </ul>
-            <div sec:authorize="isAuthenticated()">
-            <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" th:if="${#authentication.name == 'admin'}">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post">
                 <button type="submit" class="btn btn-outline-warning btn-sm my-2 my-sm-0">LogOut</button>
             </form>
-            </div>
         </div>
     </nav>
-
-
 
     <br><br><br><br>
 
@@ -64,6 +53,7 @@
 
         </div>
     </div>
+
 <script src="../static/resources/js/app.js" th:src="@{/resources/js/app.js}"></script>
 <script th:src="@{/webjars/jquery/jquery.min.js}"></script>
 <script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>

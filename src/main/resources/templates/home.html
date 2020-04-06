@@ -1,31 +1,24 @@
 <!DOCTYPE html>
 
 <html xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
       th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 
 <body>
 
-<div class="card text-white bg-secondary">
+<div class="card w-75 text-white bg-secondary blockquote text-center">
     <div class="card-header">
-        <blockquote class="blockquote text-center">
             <h1>Quiz Rules</h1>
-        </blockquote>
     </div>
 
-    <div class="card-body blockquote text-center">
-        <h4 class="card-title">
-        </h4>
-
-        <div class="card-body">
+    <div class="card-body">
+        <p>
             You have 15 mins to answer 70 questions<br>
             In order to pass you should get at least 90%<br>
             You have two attempts<br>
             Good luck!
-        </div>
-
+        </p>
     </div>
-    <div class="card-footer blockquote text-center">
+    <div class="card-footer">
         <a class="btn btn-warning" href="/agent/quiz/1/question">Start</a>
     </div>
 </div>
