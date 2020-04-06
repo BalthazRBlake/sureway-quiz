@@ -1,1 +1,1 @@
-web: java -jar target/Ssureway-quiz-0.0.1-SNAPSHOT.jar
+web: java -jar target/sureway-quiz-git0.0.1-SNAPSHOT.jar
