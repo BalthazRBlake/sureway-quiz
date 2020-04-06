@@ -16,7 +16,7 @@
                     </h4>
 
                     <form th:Object="${question}" action="#" autocomplete="off"
-                          th:action="@{/question/{id}(id=${question.quizId})}" method="POST">
+                          th:action="@{/sw/quiz/{id}/question(id=${question.quizId})}" method="POST">
 
                         <div class="card-text">
                             <ol type="A">

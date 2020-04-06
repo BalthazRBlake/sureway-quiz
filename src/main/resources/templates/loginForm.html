@@ -11,14 +11,12 @@
         </h4>
         <div class="card-body">
 
-            <h4 class="card-title">
-                Provide User and Pass
-            </h4>
+            <h4 class="card-title"></h4>
 
-            <div th:if="${param.error}">
+            <div style="color: yellow" th:if="${param.error}">
                 Invalid username and password.
             </div>
-            <div th:if="${param.logout}">
+            <div style="color: yellow" th:if="${param.logout}">
                 You have been logged out.
             </div>
 
@@ -50,7 +48,7 @@
             </form>
         </div>
         <div class="card-footer">
-            If you do not remember your password, ask office manager.
+            Login information <b>(Name and Password)</b> was sent to your email.
         </div>
     </div>
 

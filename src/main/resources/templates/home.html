@@ -1,38 +1,32 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
 
 <body>
 
-<blockquote class="blockquote text-center">
-    <h1>Quiz</h1>
-</blockquote>
-
-<!--ol>
-<th:block th:each = "question : ${quiz}">
-    <li>
-        <p th:text = "${question.question}"></p>
-        <p th:text = "${question.rightAnswer}"></p>
-        <th:block th:each = "wrongAnswer : ${question.wrongAnswers}">
-            <p th:text = "${wrongAnswer}"></p>
-        </th:block>
-    </li>
-</th:block>
-</ol-->
 <div class="card text-white bg-secondary">
-    <h4 class="card-header">
+    <div class="card-header">
         <blockquote class="blockquote text-center">
-            Agents' List
+            <h1>Quiz Rules</h1>
         </blockquote>
-    </h4>
-
-    <div class="card-body">
-        <h4 class="card-title"></h4>
-        <div class="card-body">
-            <a href="/login">Agent LogIn</a>
-        </div>
     </div>
-    <div class="card-footer">
+
+    <div class="card-body blockquote text-center">
+        <h4 class="card-title">
+        </h4>
+
+        <div class="card-body">
+            You have 15 mins to answer 70 questions<br>
+            In order to pass you should get at least 90%<br>
+            You have two attempts<br>
+            Good luck!
+        </div>
+
+    </div>
+    <div class="card-footer blockquote text-center">
+        <a class="btn btn-warning" href="/sw/quiz/1/question">Start</a>
     </div>
 </div>
 

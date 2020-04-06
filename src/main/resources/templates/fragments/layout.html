@@ -34,9 +34,26 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="/">
             <img src="/resources/images/logo.png" height="30" class="d-inline-block align-top" alt="">
-            Agents Quiz
         </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                </li>
+            </ul>
+            <div sec:authorize="isAuthenticated()">
+            <form class="form-inline my-2 my-lg-0" th:action="@{/logout}" method="post" th:if="${#authentication.name == 'admin'}">
+                <button type="submit" class="btn btn-outline-warning btn-sm my-2 my-sm-0">LogOut</button>
+            </form>
+            </div>
+        </div>
     </nav>
+
+
 
     <br><br><br><br>
 
@@ -47,6 +64,9 @@
 
         </div>
     </div>
-<script src="/resources/js/app.js" th:src="@{/resources/js/app.js}"></script>
+<script src="../static/resources/js/app.js" th:src="@{/resources/js/app.js}"></script>
+<script th:src="@{/webjars/jquery/jquery.min.js}"></script>
+<script th:src="@{/webjars/jquery-ui/jquery-ui.min.js}"></script>
+<script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
 </body>
 </html>

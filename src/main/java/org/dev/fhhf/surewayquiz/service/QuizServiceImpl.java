@@ -19,6 +19,11 @@ public class QuizServiceImpl implements QuizService{
     }
 
     @Override
+    public Long countTotalQuestions() {
+        return quizRepo.count();
+    }
+
+    @Override
     public Quiz getQuestionById(int questionId) {
         return quizRepo.findById(questionId).get();
     }

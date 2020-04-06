@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+
+<div class="card text-white bg-secondary blockquote text-center">
+    <h4 class="card-header">
+        <blockquote class="blockquote text-center">
+            Quiz Result
+        </blockquote>
+    </h4>
+
+    <div class="card-body">
+
+        <div class="card-body">
+            <p th:text="${message}"></p>
+            <p>You score <span th:text="${result}"/>%</p>
+        </div>
+
+    </div>
+
+    <div class="card-footer blockquote text-center">
+        <a th:if="${result < 90}" class="btn btn-warning" href="/sw/quiz/1/question">Start</a>
+    </div>
+</div>
+
+</body>
+</html>

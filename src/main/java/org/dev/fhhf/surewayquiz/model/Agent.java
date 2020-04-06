@@ -31,6 +31,10 @@ public class Agent implements Serializable, Comparable<Agent> {
         this.active = active;
     }
 
+    public void increaseScore(int score){
+        this.score = score + 1;
+    }
+
     @Override
     public int compareTo(Agent agent) {
         return this.getName().compareTo(agent.getName());
