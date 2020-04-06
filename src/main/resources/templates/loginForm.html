@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'login')}">
+
+<body>
+    <div class="card w-50 text-white bg-secondary">
+        <h4 class="card-header">
+            LogIn
+        </h4>
+        <div class="card-body">
+
+            <h4 class="card-title"></h4>
+
+            <div style="color: yellow" th:if="${param.error}">
+                Invalid username and password.
+            </div>
+            <div style="color: yellow" th:if="${param.logout}">
+                You have been logged out.
+            </div>
+
+            <form th:action="@{/login}" method="post">
+
+                <div class="card-text">
+                    <div class="form-group row">
+                        <label for="agentName" class="col-sm-3 col-form-label">Name</label>
+                        <div class="col-sm-9">
+                            <input type="text" name="username" placeholder="Agent Name" class="form-control" id="agentName">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label for="agentPass" class="col-sm-3 col-form-label">Password</label>
+                        <div class="col-sm-9">
+                            <input type="password" name="password" placeholder="*****" class="form-control" id="agentPass">
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <div class="col-sm-4">
+                        <button type="submit" class="btn btn-warning">LogIn</button>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="card-footer">
+            Login information <b>(Name and Password)</b> was sent to your email.
+        </div>
+    </div>
+</body>
+</html>

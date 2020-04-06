@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'question')}">
+<body>
+        <div th:if="${!answers.isEmpty()}">
+            <div class="card w-75 text-white bg-secondary">
+                <h4 class="card-header">
+                    Question # <span th:text="${question.quizId}"></span>.
+                </h4>
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        <span th:text = "${question.question}"></span>
+                    </h4>
+
+                    <form th:Object="${question}" action="#" autocomplete="off"
+                          th:action="@{/agent/quiz/{id}/question(id=${question.quizId})}" method="POST">
+
+                        <div class="card-text">
+                            <ol type="A">
+                                <li th:each = "answer : ${answers}">
+                                    <input type="radio"  th:field="*{selectedAnswer}" autocomplete="false"
+                                           th:value="${answer}" id="answer" name="answer" >
+                                    <label for="answer" th:text="${answer}"></label>
+                                </li>
+                            </ol>
+                        </div>
+
+                        <div class="form-group row">
+                            <div class="col-sm-4">
+                                <button type="submit" class="btn btn-warning">Submit</button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="card-footer">
+                    <p>Time: <span id="timer"></span></p>
+                    <!--p th:text="${currentTime}"></p-->
+                </div>
+            </div>
+        </div>
+<script src="../static/resources/js/timer.js" th:src="@{/resources/js/timer.js}"></script>
+</body>
+</html>

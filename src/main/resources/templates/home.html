@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+
+<div class="card w-75 text-white bg-secondary blockquote text-center">
+    <div class="card-header">
+            <h1>Quiz Rules</h1>
+    </div>
+
+    <div class="card-body">
+        <p>
+            You have 15 mins to answer 70 questions<br>
+            In order to pass you should get at least 90%<br>
+            You have two attempts<br>
+            Good luck!
+        </p>
+    </div>
+    <div class="card-footer">
+        <a class="btn btn-warning" th:href="@{/agent/quiz/start}" id="startBtn">Start</a>
+    </div>
+</div>
+<script src="../static/resources/js/date.js" th:src="@{/resources/js/date.js}"></script>
+</body>
+</html>

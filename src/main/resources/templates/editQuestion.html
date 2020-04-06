@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'addQuestion')}">
+
+<body>
+
+<div class="card w-75 text-white bg-secondary">
+    <h4 class="card-header">
+        <blockquote class="blockquote text-center">
+            Quiz
+        </blockquote>
+    </h4>
+    <div class="card-body">
+
+        <h4 class="card-title">
+            Edit or add
+        </h4>
+
+        <form th:Object="${initQ}" action="#" th:action="@{/addQuestion}" method="POST">
+        <div class="form-group row">
+            <label for="questionTxt" class="col-sm-3 col-form-label">Question:</label>
+            <div class="col-sm-9">
+                <input type="text" th:field="*{question}" class="form-control" id="questionTxt">
+            </div>
+        </div>
+        <div class="form-group row">
+            <label for="rightAnswerTxt" class="col-sm-3 col-form-label">Right answer:</label>
+            <div class="col-sm-9">
+                <input type="text" th:field="*{rightAnswer}" class="form-control" id="rightAnswerTxt">
+            </div>
+        </div>
+
+        <div th:each="wrongAnswer, itemStat : *{wrongAnswers}">
+            <div class="form-group row">
+                <label for="wrongAnswersTxt" class="col-sm-3 col-form-label">Wrong answer
+                    <span th:text="${itemStat.index + 1}"></span>:
+                </label>
+                <div class="col-sm-9">
+                    <input type="text" th:field="*{wrongAnswers[__${itemStat.index}__]}" class="form-control" id="wrongAnswersTxt">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <div class="col-sm-4">
+                <button type="submit" class="btn btn-warning">Save</button>
+            </div>
+        </div>
+    </form>
+
+    </div>
+    <div class="card-footer">
+    </div>
+</div>
+</body>
+</html>
