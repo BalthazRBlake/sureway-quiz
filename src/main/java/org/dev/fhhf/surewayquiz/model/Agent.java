@@ -17,13 +17,13 @@ public class Agent implements Serializable, Comparable<Agent> {
     private String password;
     private Integer score;
     private String roles;
-    private Boolean active;
+    private boolean active;
     private Integer attempts;
 
     public Agent() {
     }
 
-    public Agent(Integer agentId, String name, String password, Integer score, String roles, Boolean active, Integer attempts) {
+    public Agent(Integer agentId, String name, String password, Integer score, String roles, boolean active, Integer attempts) {
         this.agentId = agentId;
         this.name = name;
         this.password = password;
@@ -82,11 +82,11 @@ public class Agent implements Serializable, Comparable<Agent> {
         this.roles = roles;
     }
 
-    public Boolean isActive() {
+    public boolean isActive() {
         return active;
     }
 
-    public void setActive(Boolean active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

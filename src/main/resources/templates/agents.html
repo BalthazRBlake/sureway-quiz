@@ -19,6 +19,7 @@
                     <th scope="col">Agent Name</th>
                     <th scope="col">Password</th>
                     <th scope="col">Score</th>
+                    <th scope="col">Attempts</th>
                     <th scope="col">Active</th>
                     <th scope="col">Roles</th>
                     <th scope="col"></th>
@@ -29,6 +30,7 @@
                     <td th:text="${agent.name}"></td>
                     <td th:text="${agent.password}"></td>
                     <td th:text="${agent.score}"></td>
+                    <td th:text="${agent.attempts}"></td>
                     <td>
                         <span th:if="${agent.active}">YES</span>
                         <span th:if="${!agent.active}">NO</span>

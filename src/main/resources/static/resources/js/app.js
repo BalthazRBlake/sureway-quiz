@@ -1,4 +1,4 @@
-loadEventListeners();
+/*loadEventListeners();
 
 function loadEventListeners(){
     document.addEventListener('DOMContentLoaded', loaded);
@@ -14,4 +14,4 @@ setInterval(function(){
         hash = window.location.hash;
         alert("User went back or forward to application state represented by " + hash);
     }
-}, 100);
+}, 100);*/

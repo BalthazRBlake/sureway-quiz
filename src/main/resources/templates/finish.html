@@ -1,23 +1,21 @@
 <!DOCTYPE html>
 
 <html xmlns:th="https://www.thymeleaf.org"
-      th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+      th:replace="~{fragments/layout :: layout (~{::body},'finish')}">
 
 <body>
 
 <div class="card w-50 text-white bg-secondary blockquote text-center">
     <h3 class="card-header">
-            Quiz Result
+        You finished your attempts
     </h3>
 
     <div class="card-body">
         <p th:text="${message}"></p>
         <p>You scored <span th:text="${result}"/>%</p>
-        <img th:if="${result < 90}" th:src="@{/resources/images/sad.png}"/>
     </div>
 
     <div class="card-footer">
-
     </div>
 </div>
 

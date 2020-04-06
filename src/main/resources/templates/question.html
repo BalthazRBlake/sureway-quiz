@@ -36,9 +36,11 @@
                     </form>
                 </div>
                 <div class="card-footer">
-                    Time: 00:00
+                    <p>Time: <span id="timer"></span></p>
+                    <!--p th:text="${currentTime}"></p-->
                 </div>
             </div>
         </div>
+<script src="../static/resources/js/timer.js" th:src="@{/resources/js/timer.js}"></script>
 </body>
 </html>

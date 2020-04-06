@@ -45,6 +45,12 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="attempts" class="col-sm-3 col-form-label">Attempts:</label>
+                <div class="col-sm-9">
+                    <input type="number" th:field="*{attempts}" class="form-control" id="attempts" min="0" max="2">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="roles" class="col-sm-3 col-form-label">Agent Name:</label>
                 <div class="col-sm-9">
                     <input type="text" th:field="*{roles}" class="form-control" id="roles" readonly="readonly">
