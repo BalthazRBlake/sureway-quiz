@@ -1,10 +1,9 @@
 <!DOCTYPE html>
 
-<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'login')}">
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'login')}">
 
 <body>
-
-
     <div class="card w-50 text-white bg-secondary">
         <h4 class="card-header">
             LogIn
@@ -51,7 +50,5 @@
             Login information <b>(Name and Password)</b> was sent to your email.
         </div>
     </div>
-
-
 </body>
 </html>
