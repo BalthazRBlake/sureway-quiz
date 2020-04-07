@@ -10,6 +10,8 @@ public interface QuizService {
 
     Long countTotalQuestions();
 
+    Quiz getByQuestionNumber(int questionNumber);
+
     Quiz getQuestionById(int questionId);
 
     Quiz insertQuestion(Quiz quiz);

@@ -24,6 +24,11 @@ public class QuizServiceImpl implements QuizService{
     }
 
     @Override
+    public Quiz getByQuestionNumber(int questionNumber) {
+        return quizRepo.findByQuestionNumber(questionNumber).get();
+    }
+
+    @Override
     public Quiz getQuestionById(int questionId) {
         return quizRepo.findById(questionId).get();
     }

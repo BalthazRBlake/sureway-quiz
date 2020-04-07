@@ -24,6 +24,11 @@ public class QuizController {
     public  String getAllQuestions(Model model){
         List<Quiz> quiz = quizService.getAllQuestions();
         Collections.sort(quiz);
+        int i=1;
+        for(Quiz question : quiz){
+            question.setQuestionNumber(i++);
+            quizService.insertQuestion(question);
+        }
         model.addAttribute("quiz", quiz);
         //Collections.shuffle(this.quiz);
         return "questions";

@@ -19,6 +19,7 @@ public class Quiz implements Serializable, Comparable<Quiz> {
     @ElementCollection
     @Column(name = "wrong_answers")
     private List<String> wrongAnswers;
+    private Integer questionNumber;
     @Transient
     private String selectedAnswer;
 
@@ -79,6 +80,14 @@ public class Quiz implements Serializable, Comparable<Quiz> {
 
     public void setSelectedAnswer(String selectedAnswer) {
         this.selectedAnswer = selectedAnswer;
+    }
+
+    public Integer getQuestionNumber() {
+        return questionNumber;
+    }
+
+    public void setQuestionNumber(Integer questionNumber) {
+        this.questionNumber = questionNumber;
     }
 
     @Override
