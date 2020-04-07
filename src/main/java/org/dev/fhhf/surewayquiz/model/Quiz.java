@@ -6,7 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "quiz")
-public class Quiz implements Serializable {
+public class Quiz implements Serializable, Comparable<Quiz> {
 
     private static final long serialVersionUID = 1234L;
     @Id
@@ -34,6 +34,11 @@ public class Quiz implements Serializable {
         this.question = question;
         this.rightAnswer = rightAnswer;
         this.wrongAnswers = wrongAnswers;
+    }
+
+    @Override
+    public int compareTo(Quiz o) {
+        return this.getQuizId().compareTo(o.getQuizId());
     }
 
     public Integer getQuizId() {

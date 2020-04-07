@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'questions')}">
+<body>
+
+<div class="row row-cols-1 row-cols-md-3">
+    <th:block th:each = "question : ${quiz}">
+        <div class="col mb-4">
+            <div class="card h-100 text-white bg-secondary">
+                <h4 class="card-header">
+                    Question # <span th:text="${question.quizId}"></span>.
+                </h4>
+                <div class="card-body">
+
+                    <h4 class="card-title">
+                        <span th:text = "${question.question}"></span>
+                    </h4>
+                    <ol type="A">
+                        <li>
+                            <p style="color: yellow" th:text = "${question.rightAnswer}"></p>
+                        </li>
+                        <li th:each= "wrongAnswer : ${question.wrongAnswers}">
+                            <p th:text = "${wrongAnswer}"></p>
+                        </li>
+
+                    </ol>
+                </div>
+                <div class="card-footer">
+                    <a th:href="@{/sw/quiz/{id}/initEditQ(id=${question.quizId})}"
+                       class="btn btn-outline-warning">Edit Question</a>
+
+                    <a th:href="@{/sw/quiz/0/initEditQ}"
+                       class="btn btn-outline-warning">Add New Question</a>
+                </div>
+            </div>
+        </div>
+    </th:block>
+</div>
+<script src="../static/resources/js/timer.js" th:src="@{/resources/js/timer.js}"></script>
+</body>
+</html>
