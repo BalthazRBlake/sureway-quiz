@@ -21,23 +21,32 @@ public class QuizController {
     private AgentService agentService;
 
     @GetMapping()
-    public String home(Model model, Quiz quiz) {
-
-        //this.quiz = quizService.getAllQuestions();
+    public  String getAllQuestions(Model model){
+        List<Quiz> quiz = quizService.getAllQuestions();
+        Collections.sort(quiz);
+        model.addAttribute("quiz", quiz);
         //Collections.shuffle(this.quiz);
-
-        ///   To init Form   ///
-        List<String> wrongAnswers = new ArrayList<>();
-        wrongAnswers.add("");wrongAnswers.add("");wrongAnswers.add("");
-        model.addAttribute("initQ", new Quiz(wrongAnswers));
-        ///***   ***///
-
+        return "questions";
+    }
+    @GetMapping("/{id}/initEditQ")
+    public String initEditQ(@PathVariable("id") int id, Model model) {
+        Quiz quiz;
+        if(id == 0){
+            ///   To init Form   ///
+            List<String> wrongAnswers = new ArrayList<>();
+            wrongAnswers.add("");wrongAnswers.add("");wrongAnswers.add("");
+            quiz = new Quiz(0, "", "", wrongAnswers);
+            ///***   ***///
+        }else {
+            quiz = quizService.getQuestionById(id);
+        }
+        model.addAttribute("initQ", quiz);
         return "editQuestion";
     }
 
-    @PostMapping("/addQuestion")
-    public String addQuestion(Quiz quiz, Model model){
+    @PostMapping("/{id}/editQuestion")
+    public String editQuestion(Quiz quiz, Model model){
         quizService.insertQuestion(quiz);
-        return "redirect:/";
+        return "redirect:/sw/quiz";
     }
 }
