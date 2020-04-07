@@ -50,13 +50,13 @@ public class QuestionsController {
     }
 
     @GetMapping("/{id}/question")
-    public String question(@PathVariable("id") int id, Model model, Principal principal){
+    public String question(@PathVariable("id") int questionNumber, Model model, Principal principal){
         //System.out.println(principal);
         /*if(id == 1) {
             Date currentTime = new Date();
             model.addAttribute("currentTime", currentTime);
         }*/
-        Quiz question = quizService.getQuestionById(id);
+        Quiz question = quizService.getByQuestionNumber(questionNumber);
         List<String> answers = new ArrayList<>();
 
         answers.add(question.getRightAnswer());
@@ -70,23 +70,23 @@ public class QuestionsController {
     }
 
     @PostMapping("/{id}/question")
-    public String nextQuestion(@PathVariable("id") int id, Quiz quiz, Principal principal) {
+    public String nextQuestion(@PathVariable("id") int questionNumber, Quiz quiz, Principal principal) {
 
         Agent agent = agentService.findAgentByName(principal.getName());
 
         String selectedAnswer = quiz.getSelectedAnswer();
-        Quiz question = quizService.getQuestionById(id);
+        Quiz question = quizService.getByQuestionNumber(questionNumber);
 
         if (question.getRightAnswer().equals(selectedAnswer)) {
             agent.increaseScore(agent.getScore());
         }
         agentService.saveAgent(agent);
 
-        if (id == quizService.countTotalQuestions()) {
+        if (questionNumber == quizService.countTotalQuestions()) {
             return "redirect:/agent/quiz/result";
         }
-        id++;
-        return "redirect:/agent/quiz/" + id + "/question";
+        questionNumber++;
+        return "redirect:/agent/quiz/" + questionNumber + "/question";
     }
 
     @GetMapping("/result")

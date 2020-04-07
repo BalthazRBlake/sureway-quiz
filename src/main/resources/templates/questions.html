@@ -9,7 +9,7 @@
         <div class="col mb-4">
             <div class="card h-100 text-white bg-secondary">
                 <h4 class="card-header">
-                    Question # <span th:text="${question.quizId}"></span>.
+                    Question # <span th:text="${question.questionNumber}"></span>
                 </h4>
                 <div class="card-body">
 
@@ -25,6 +25,7 @@
                         </li>
 
                     </ol>
+                    <p>Question id: <span th:text="${question.quizId}"></span></p>
                 </div>
                 <div class="card-footer">
                     <a th:href="@{/sw/quiz/{id}/initEditQ(id=${question.quizId})}"
