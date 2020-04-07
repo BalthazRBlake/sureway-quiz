@@ -17,17 +17,18 @@
         <form th:Object="${agent}" action="#" th:action="@{/sw/agent/{id}/update(id=${agent.agentId})}" method="POST">
 
             <input type="hidden" th:field="*{agentId}">
+            <input type="hidden" th:field="*{answers}">
 
             <div class="form-group row">
                 <label for="agentName" class="col-sm-3 col-form-label">Agent Name:</label>
                 <div class="col-sm-9">
-                    <input type="text" th:field="*{name}" class="form-control" id="agentName">
+                    <input type="text" th:field="*{name}" class="form-control" id="agentName" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="agentPass" class="col-sm-3 col-form-label">Password:</label>
                 <div class="col-sm-9">
-                    <input type="text" th:field="*{password}" class="form-control" id="agentPass">
+                    <input type="text" th:field="*{password}" class="form-control" id="agentPass" required>
                 </div>
             </div>
             <div class="form-group row">
@@ -47,7 +48,7 @@
             <div class="form-group row">
                 <label for="attempts" class="col-sm-3 col-form-label">Attempts:</label>
                 <div class="col-sm-9">
-                    <input type="number" th:field="*{attempts}" class="form-control" id="attempts" min="0" max="2">
+                    <input type="number" th:field="*{attempts}" class="form-control" id="attempts" min="0" max="2" required>
                 </div>
             </div>
             <div class="form-group row">

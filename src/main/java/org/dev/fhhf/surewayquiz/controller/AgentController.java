@@ -60,7 +60,7 @@ public class AgentController {
 
             for (int i = 0; i < answers.length; i++) {
                 if (answers[i].charAt(0) == '0') {
-                    wrongOnes.add( (i+1) + " selected: " + answers[i].substring(2) );
+                    wrongOnes.add( answers[i].substring(2) );
                 }
             }
         }

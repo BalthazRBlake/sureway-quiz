@@ -106,7 +106,7 @@ public class QuestionsController {
 
         Agent agent = agentService.findAgentByName(principal.getName());
         Long result = agent.getScore() * 100 / quizService.countTotalQuestions();
-        String message = result < 90 ? "Sorry, you haven't pass" : "Well done!!!";
+        String message = result < 90 ? "Sorry, you haven't passed" : "Well done!!!";
 
         /*if(result < 90){
             //message = "Try again";

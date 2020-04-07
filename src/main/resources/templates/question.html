@@ -21,7 +21,7 @@
                             <ol type="A">
                                 <li th:each = "answer : ${answers}">
                                     <input type="radio"  th:field="*{selectedAnswer}" autocomplete="false"
-                                           th:value="${answer}" id="answer" name="answer" >
+                                           th:value="${answer}" id="answer" name="answer" required>
                                     <label for="answer" th:text="${answer}"></label>
                                 </li>
                             </ol>

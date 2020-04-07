@@ -1,7 +1,7 @@
 let date = new Date(sessionStorage.getItem("date"));
 //console.log(date);
 //console.log(date.getTime());
-let finalTime = date.getTime() + 30 * 60000;
+let finalTime = date.getTime() + 60 * 60000;
 //console.log(finalTime);
 var x = setInterval(function() {
 
