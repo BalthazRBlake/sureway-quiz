@@ -30,7 +30,12 @@ public class AgentController {
 
     @GetMapping("/{id}/initForm")
     public String initUpdateForm(@PathVariable("id") int id, Model model){
-        Agent agent = agentService.findAgentById(id);
+        Agent agent;
+
+        agent = id != 0 ? agentService.findAgentById(id)
+                        : new Agent(0,"","test001",
+                         0,"ROLE_USER",true,0);
+
         model.addAttribute("agent", agent);
         return "editAgent";
     }

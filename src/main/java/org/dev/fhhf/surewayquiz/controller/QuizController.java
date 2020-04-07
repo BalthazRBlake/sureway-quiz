@@ -19,8 +19,8 @@ public class QuizController {
     private QuizService quizService;
     @Autowired
     private AgentService agentService;
-
-    @GetMapping()
+    
+    @GetMapping("/saveNew")
     public String home(Model model, Quiz quiz) {
 
         //this.quiz = quizService.getAllQuestions();
