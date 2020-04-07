@@ -42,6 +42,7 @@ public class QuestionsController {
             attempts++;
             agent.setScore(0);
             agent.setAttempts(attempts);
+            agent.setAnswers("A:");
             agentService.saveAgent(agent);
             return "redirect:/agent/quiz/1/question";
         }
@@ -77,9 +78,20 @@ public class QuestionsController {
         String selectedAnswer = quiz.getSelectedAnswer();
         Quiz question = quizService.getByQuestionNumber(questionNumber);
 
-        if (question.getRightAnswer().equals(selectedAnswer)) {
+        String answers = agent.getAnswers();
+        String ans = "0 " + questionNumber + " " + selectedAnswer;
+        if(question.getRightAnswer().equals(selectedAnswer)) {
             agent.increaseScore(agent.getScore());
+            ans = "1 " + questionNumber + " " + selectedAnswer;
         }
+        if(answers.contains("0 " + questionNumber) || answers.contains("1 " + questionNumber)){
+            //System.out.println("YA RESPONDIO");
+            questionNumber++;
+            return "redirect:/agent/quiz/" + questionNumber + "/question";
+        }
+        answers = answers.concat(ans + ",");
+        agent.setAnswers(answers);
+
         agentService.saveAgent(agent);
 
         if (questionNumber == quizService.countTotalQuestions()) {
@@ -94,7 +106,7 @@ public class QuestionsController {
 
         Agent agent = agentService.findAgentByName(principal.getName());
         Long result = agent.getScore() * 100 / quizService.countTotalQuestions();
-        String message = result < 90 ? "Sorry, you haven't pass" : "Well done!!!";
+        String message = result < 90 ? "Sorry, you haven't passed" : "Well done!!!";
 
         /*if(result < 90){
             //message = "Try again";

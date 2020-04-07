@@ -19,6 +19,7 @@
                     <th scope="col">Agent Name</th>
                     <th scope="col">Password</th>
                     <th scope="col">Score</th>
+                    <th scope="col">Quiz Details</th>
                     <th scope="col">Attempts</th>
                     <th scope="col">Active</th>
                     <th scope="col">Roles</th>
@@ -30,6 +31,10 @@
                     <td th:text="${agent.name}"></td>
                     <td th:text="${agent.password}"></td>
                     <td th:text="${agent.score}"></td>
+                    <td>
+                        <a th:href="@{/sw/agent/{id}/quizDetails(id=${agent.agentId})}"
+                           class="btn btn-outline-warning btn-sm">Details</a>
+                    </td>
                     <td th:text="${agent.attempts}"></td>
                     <td>
                         <span th:if="${agent.active}">YES</span>
@@ -37,7 +42,8 @@
                     </td>
                     <td th:text="${agent.roles}"></td>
                     <td><a th:href="@{/sw/agent/{id}/initForm(id=${agent.agentId})}"
-                           class="btn btn-outline-warning btn-sm">Edit</a></td>
+                           class="btn btn-outline-warning btn-sm">Edit</a>
+                    </td>
                 </tr>
             </tbody>
         </table>

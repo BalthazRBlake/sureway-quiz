@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'agentQuizDetails')}">
+
+<body>
+
+<div class="card text-white bg-secondary">
+    <h4 class="card-header blockquote text-center">
+        Wrong Answers
+    </h4>
+
+    <div class="card-body">
+        <div th:if="${!wrongOnes.isEmpty()}">
+            <ul>
+                <li th:each="wrongOne : ${wrongOnes}">
+                    Question # <span th:text="${wrongOne}"></span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card-footer">
+        <a th:href="@{/sw/agent}"
+           class="btn btn-outline-warning">Go Back</a>
+    </div>
+</div>
+</body>
+</html>

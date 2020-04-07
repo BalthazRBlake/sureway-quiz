@@ -16,13 +16,13 @@
             <div class="form-group row">
                 <label for="questionTxt" class="col-sm-3 col-form-label">Question:</label>
                 <div class="col-sm-9">
-                    <input type="text" th:field="*{question}" class="form-control" id="questionTxt">
+                    <input type="text" th:field="*{question}" class="form-control" id="questionTxt" required>
                 </div>
             </div>
             <div class="form-group row">
                 <label for="rightAnswerTxt" class="col-sm-3 col-form-label">Right answer:</label>
                 <div class="col-sm-9">
-                    <input type="text" th:field="*{rightAnswer}" class="form-control" id="rightAnswerTxt">
+                    <input type="text" th:field="*{rightAnswer}" class="form-control" id="rightAnswerTxt" required>
                 </div>
             </div>
 
@@ -32,7 +32,7 @@
                         <span th:text="${itemStat.index + 1}"></span>:
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" th:field="*{wrongAnswers[__${itemStat.index}__]}" class="form-control" id="wrongAnswersTxt">
+                        <input type="text" th:field="*{wrongAnswers[__${itemStat.index}__]}" class="form-control" id="wrongAnswersTxt" required>
                     </div>
                 </div>
             </div>

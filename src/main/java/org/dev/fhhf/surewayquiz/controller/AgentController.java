@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -34,7 +35,7 @@ public class AgentController {
 
         agent = id != 0 ? agentService.findAgentById(id)
                         : new Agent(0,"","test001",
-                         0,"ROLE_USER",true,0);
+                         0,"ROLE_USER",true,0, "A:");
 
         model.addAttribute("agent", agent);
         return "editAgent";
@@ -44,5 +45,26 @@ public class AgentController {
     public String updateAgentInfo(@PathVariable("id") int id, Agent agent){
         agentService.saveAgent(agent);
         return "redirect:/sw/agent";
+    }
+
+    @GetMapping("/{id}/quizDetails")
+    public String quizDetails(@PathVariable("id")int id, Model model){
+        Agent agent = agentService.findAgentById(id);
+        List<String> wrongOnes = new ArrayList<>();
+        //System.out.println(agent.getAnswers());
+        //System.out.println(agent.getAnswers().length());
+        if(agent.getAnswers().length() > 2) {
+            String ans = agent.getAnswers().substring(2);
+            //System.out.println("SUB ST   :::   " + ans);
+            String[] answers = ans.split(",");
+
+            for (int i = 0; i < answers.length; i++) {
+                if (answers[i].charAt(0) == '0') {
+                    wrongOnes.add( answers[i].substring(2) );
+                }
+            }
+        }
+        model.addAttribute("wrongOnes", wrongOnes);
+        return "agentQuizDetails";
     }
 }
