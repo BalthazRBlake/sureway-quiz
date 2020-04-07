@@ -42,6 +42,7 @@ public class QuestionsController {
             attempts++;
             agent.setScore(0);
             agent.setAttempts(attempts);
+            agent.setAnswers("A:");
             agentService.saveAgent(agent);
             return "redirect:/agent/quiz/1/question";
         }
@@ -77,9 +78,20 @@ public class QuestionsController {
         String selectedAnswer = quiz.getSelectedAnswer();
         Quiz question = quizService.getByQuestionNumber(questionNumber);
 
-        if (question.getRightAnswer().equals(selectedAnswer)) {
+        String answers = agent.getAnswers();
+        String ans = "0 " + questionNumber + " " + selectedAnswer;
+        if(question.getRightAnswer().equals(selectedAnswer)) {
             agent.increaseScore(agent.getScore());
+            ans = "1 " + questionNumber + " " + selectedAnswer;
         }
+        if(answers.contains("0 " + questionNumber) || answers.contains("1 " + questionNumber)){
+            //System.out.println("YA RESPONDIO");
+            questionNumber++;
+            return "redirect:/agent/quiz/" + questionNumber + "/question";
+        }
+        answers = answers.concat(ans + ",");
+        agent.setAnswers(answers);
+
         agentService.saveAgent(agent);
 
         if (questionNumber == quizService.countTotalQuestions()) {
