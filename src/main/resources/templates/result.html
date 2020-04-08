@@ -13,6 +13,7 @@
     <div class="card-body">
         <p th:text="${message}"></p>
         <p>You scored <span th:text="${result}"/>%</p>
+        <img th:if="${result > 90}" th:src="@{/resources/images/happy.png}"/>
         <img th:if="${result < 90}" th:src="@{/resources/images/sad.png}"/>
     </div>
 
